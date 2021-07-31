@@ -18,7 +18,7 @@ class Encoder(AbstractFileConvertor):
         }
 
     def convert_text(self, input_text: str) -> str:
-        for original, replace in sorted(self._latter_mapper.items(),
+        for replace, original in sorted(self._latter_mapper.items(),
                                         key=lambda x: len(x),
                                         reverse=True):
             input_text = input_text.replace(original, replace, -1)
@@ -46,7 +46,7 @@ class Encoder(AbstractFileConvertor):
                                                      output_prefix, output_dir)
             with open(filename) as file:
                 with open(output_name, 'w') as outfile:
-                    converted_text = self._convert_text(file.read())
+                    converted_text = self.convert_text(file.read())
                     outfile.write(converted_text)
                 result.append(converted_text)
         return result
