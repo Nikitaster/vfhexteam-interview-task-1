@@ -7,8 +7,14 @@ import glob
 class Decoder(AbstractFileConvertor):
     @staticmethod
     def _file_to_dict(filename) -> dict[str, str]:
-        # TODO: need to implement this functionality [1]
-        raise NotImplementedError('Not implemented [1]')
+        with open(filename) as file:
+            tuple_list = [
+                tuple(line.split(':', 1)) for line in file.readlines()
+            ]
+        return {
+            variable.strip().split(',')[0]: original.strip().lower() 
+            for original, variable in tuple_list
+        }
 
     def convert_text(self, input_text: str) -> str:
         for original, replace in self._latter_mapper.items():
