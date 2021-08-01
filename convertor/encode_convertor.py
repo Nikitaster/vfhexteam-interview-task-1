@@ -18,9 +18,7 @@ class Encoder(AbstractFileConvertor):
         }
 
     def convert_text(self, input_text: str) -> str:
-        for replace, original in sorted(self._latter_mapper.items(),
-                                        key=lambda x: len(x),
-                                        reverse=True):
+        for replace, original in self._latter_mapper.items():
             input_text = input_text.replace(original, replace, -1)
         return input_text
 
@@ -33,7 +31,7 @@ class Encoder(AbstractFileConvertor):
         encode_dict = dict(
             sorted(encode_dict.items(),
                    key=lambda item: len(item[0]),
-                   reverse=True))
+                   reverse=False))
         return encode_dict
 
     def convert_files(self, *, input_dir: str, input_mask: str,
