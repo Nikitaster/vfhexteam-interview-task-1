@@ -1,11 +1,12 @@
 import os
 import re
 
-from convertor.abstract_base_convertor import AbstractFileConvertor
+from convertor.abstract_base_convertor import AbstractTextConvertor
+from convertor.abstract_base_file_generator import AbstractFileGenerator
 import glob
 
 
-class Decoder(AbstractFileConvertor):
+class Decoder(AbstractTextConvertor, AbstractFileGenerator):
     @staticmethod
     def _file_to_dict(filename) -> dict[str, str]:
         with open(filename) as file:
