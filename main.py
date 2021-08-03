@@ -8,10 +8,10 @@ from convertor.decode_convertor import Decoder
 from convertor.trash_generator import Trasher
 
 ROOT_PATH = Path(__file__).parent
-KEY_FILE = Path(os.path.dirname(convertor.__file__)) / 'key'
-SOURCE_DIR = ROOT_PATH / 'source'
-DECODED_DIR = ROOT_PATH / 'decoded_sources'
-ENCODED_DIR = ROOT_PATH / 'encoded_sources'
+KEY_FILE = Path(os.path.join(os.path.dirname(convertor.__file__), 'key'))
+SOURCE_DIR = Path(os.path.join(ROOT_PATH, 'source'))
+DECODED_DIR = Path(os.path.join(ROOT_PATH, 'decoded_sources'))
+ENCODED_DIR = Path(os.path.join(ROOT_PATH, 'encoded_sources'))
 
 
 def assert_source_files():

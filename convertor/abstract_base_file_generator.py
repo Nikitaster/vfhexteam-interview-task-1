@@ -1,11 +1,9 @@
 import os
+from abc import ABC
 
 
-class AbstractFileGenerator():
+class AbstractFileGenerator(ABC):
     """Abstract base class for file generators"""
-    
-    def __init__(self) -> None:
-        pass
 
     @staticmethod
     def output_name_generator(input_file_name: str, input_prefix: str,
